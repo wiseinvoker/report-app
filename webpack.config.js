@@ -23,14 +23,14 @@ module.exports = {
   module: {
     postLoaders: [
       {
-        loader: 'transform/cacheable?brfs',
+        loader: 'transform-loader/cacheable?brfs',
       },
     ],
     loaders: [
       {
         test: /\.js$/,
         exclude: /(node_modules)/,
-        loaders: [ 'babel?stage=0', 'ng-annotate' ],
+        loaders: [ 'babel-loader?stage=0', 'ng-annotate-loader' ],
       },
       {
         test: /\.s?css$/,
@@ -38,11 +38,11 @@ module.exports = {
       },
       {
         test: /\.html/,
-        loaders: [ 'raw' ],
+        loaders: [ 'raw-loader' ],
       },
       {
         test: /\.json/,
-        loaders: [ 'json' ],
+        loaders: [ 'json-loader' ],
       },
     ],
   },
