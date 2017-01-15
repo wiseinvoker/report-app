@@ -1,0 +1,345 @@
+// Inspired by http://codepen.io/zavoloklom/pen/IGkDz
+
+@import '../variables';
+
+// Variables
+// ---------------------
+$table-header-font-weight:      normal;
+$table-header-font-size:        12px;
+$table-header-font-color:       rgba(0,0,0,.54);
+$table-header-height:           56px;
+
+$table-row-height:              48px;
+
+$table-cell-padding:            1.0rem;
+$table-condensed-cell-padding:  $table-cell-padding/2;
+
+$table-bg-hover:                #EEEEEE;
+$table-bg-active:               #F5F5F5;
+$table-border-color:            rgba(0,0,0,.12);
+$table-font-color:              rgba(0,0,0,.87);
+
+// Tables
+//
+// -----------------
+
+// Baseline styles
+table.f-table {
+  width: 100%;
+  max-width: 100%;
+  //margin-bottom: 2rem;
+  border-spacing: 0;
+  > thead,
+  > tbody,
+  > tfoot {
+    > tr {
+      transition: all 300ms ease;
+      > th,
+      > td {
+        color: $table-font-color;
+        font-size: $table-header-font-size;
+        text-align: left;
+        padding: $table-cell-padding;
+        vertical-align: middle;
+        border-top: 0;
+        transition: all 300ms ease;
+        line-height: 36px;
+
+        &:first-child {
+          padding-left: 16px;
+        }
+
+        &:last-child {
+          padding-right: 16px;
+        }
+      }
+    }
+  }
+  > thead > tr > th {
+    font-weight: $table-header-font-weight;
+    color: $table-header-font-color;
+    vertical-align: middle;
+    border-bottom: 1px solid rgba(0,0,0,.12);
+  }
+  > caption + thead,
+  > colgroup + thead,
+  > thead:first-child {
+    > tr:first-child {
+      > th,
+      > td {
+        border-top: 0;
+      }
+    }
+  }
+  > tbody + tbody {
+    border-top: 1px solid rgba(0,0,0,.12);
+  }
+
+  // Condensed table w/ half padding
+  &.md-table-condensed {
+    > thead,
+    > tbody,
+    > tfoot {
+      > tr {
+        > th,
+        > td {
+          padding: $table-condensed-cell-padding;
+
+          &:first-child {
+            padding-left: 16px;
+          }
+
+          &:last-child {
+            padding-right: 16px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.md-table-num {
+  text-align: right;
+}
+
+.md-table-clip {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.md-table-fixed {
+  table-layout: fixed;
+}
+
+.md-table-hover {
+  > tbody > tr:hover {
+    background-color: $table-bg-hover;
+  }
+}
+
+
+// Bordered version
+//
+// Add horizontal borders between columns.
+.md-table-bordered {
+  border: 0;
+  thead,
+  tbody,
+  tfoot {
+    tr {
+      th,
+      td {
+        border: 0;
+        border-bottom: 1px solid $table-border-color;
+        border-right: 1px solid $table-border-color;
+
+        &:last-child {
+          border-right: 0;
+        }
+      }
+    }
+  }
+
+  thead tr {
+    th,
+    td {
+      border-bottom-width: 2px;
+    }
+  }
+}
+
+// Zebra-striping
+//
+// Default zebra-stripe styles (alternating gray and transparent backgrounds)
+.md-table-striped {
+  > tbody > tr:nth-child(odd) {
+    > td,
+    > th {
+      background-color: rgba(0,0,0,.03);
+    }
+  }
+}
+
+// Responsive tables (vertical)
+//
+// Wrap your tables in `.table-responsive-vertical` and we'll make them mobile friendly
+// by vertical table-cell display. Only applies <768px. Everything above that will display normally.
+// For correct display you must add 'data-title' to each 'td'
+.md-table-responsive-vertical {
+
+  @media screen and (max-width: 959px) {
+
+    // Tighten up spacing
+    > .table {
+      margin-bottom: 0;
+      background-color: transparent;
+      > thead,
+      > tfoot {
+        display: none;
+      }
+
+      > tbody {
+        display: block;
+
+        > tr {
+          display: flex;
+          box-sizing: border-box;
+          flex-direction: column;
+          margin: 8px;
+
+          box-shadow: 0px 2px 5px 0 rgba(0,0,0,0.26);
+
+          > td {
+            display: block;
+            vertical-align: middle;
+            text-align: right;
+          }
+          > td[data-title]:before {
+            content: attr(data-title);
+            float: left;
+            font-size: inherit;
+            font-weight: $table-header-font-weight;
+            color: $table-header-font-color;
+          }
+        }
+      }
+    }
+    
+    // Special overrides for shadows
+    &.shadow-z-1 {
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      box-shadow: none;
+      > .table > tbody > tr {
+        border: none;
+      }
+    }
+
+    // Special overrides for the bordered tables
+    > .table-bordered {
+      border: 0;
+
+      // Nuke the appropriate borders so that the parent can handle them
+      > tbody {
+        > tr {
+          > td {
+            border: 0;
+            border-bottom: 1px solid $table-border-color;
+          }
+          > td:last-child {
+            border-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+.md-table {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  color: $table-font-color;
+  font-size: 16px;
+
+  &.md-bordered {
+    border: 1px solid $table-border-color;
+  }
+
+  &.not-responsive {
+    md-table-row {
+      display: flex;
+      flex-shrink: 0;
+      min-height: $table-row-height;
+      flex-flow: row nowrap;
+
+      &.md-table-header {
+        display: flex;
+        min-height: $table-header-height;
+        line-height: $table-header-height;
+        font-weight: $table-header-font-weight;
+        font-size: $table-header-font-size;
+        color: $table-header-font-color;
+        background: #FFF;
+
+        &.md-sticky-clone[sticky-state=active] {
+          margin-right: 16px;
+        }
+      }
+    }
+
+    md-table-cell {
+      padding: 17px 0;
+      margin-right: 56px;
+
+      &:last-child,
+      &[md-table-key] {
+        margin-right: 24px;
+      }
+
+      &:first-child {
+        margin-left: 24px;
+      }
+
+      &:before {
+        content: none;
+      }
+
+      .md-button {
+        padding: 0;
+        height: 1rem;
+        line-height: 1rem;
+        min-height: 1rem;
+      }
+
+      @media (max-width: $layout-breakpoint-sm) {
+        margin-right: 5px;
+      }
+    }
+  }
+
+  @media (min-width: $layout-breakpoint-md) {
+    @extend .not-responsive;
+  }
+}
+
+md-table-row {
+  border-bottom: 1px solid $table-border-color;
+
+  &:hover {
+    background: $table-bg-hover;
+  }
+
+  &.md-active {
+    background: $table-bg-active;
+  }
+}
+
+md-table-row.md-table-header {
+  display: none;
+}
+
+md-table-cell {
+  display: block;
+  flex-flow: row nowrap;
+  flex-grow: 1;
+  flex-basis: 0;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+
+  &:before {
+    content: attr(md-table-cell-header);
+    width: 30%;
+    font-weight: $table-header-font-weight;
+    font-size: $table-header-font-size;
+    color: $table-header-font-color;
+  }
+
+  &[md-number] {
+    text-align: right;
+  }
+}
+

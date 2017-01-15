@@ -1,0 +1,396 @@
+@import 'variables';
+@import '../node_modules/spinkit/scss/spinners/7-three-bounce';
+@import '../node_modules/ng-sortable/dist/ng-sortable.css';
+
+body {
+  height: 100%;
+  // background-color: #F9F9F9;
+}
+
+.report {
+  .content {
+    margin-bottom: 30px;
+  }
+}
+
+.page-loading-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $page-loading-background-color;
+  z-index: 1100;
+
+  transition: all linear 0.5s;
+  opacity: 1;
+
+  &.ng-hide {
+    opacity: 0;
+  }
+}
+
+/* Toolbar */
+
+/*md-toolbar:before {
+  content: "";
+  height: 64px;
+  left: -2%;
+  position: fixed;
+  width: 104%;
+  will-change: top,left;
+}*/
+
+md-toolbar.md-tall-on-md {
+  height: 64px;
+  min-height: 64px;
+  max-height: 64px;
+
+  @media( min-width: $layout-breakpoint-md ) {
+    height: 128px;
+    min-height: 128px;
+    max-height: 128px;
+  }
+}
+
+.md-toolbar-tools .title {
+  display: none;
+
+  @media( min-width: $layout-breakpoint-md ) {
+    display: inline;
+  }
+}
+
+.md-toolbar-tools-bottom,
+.md-toolbar-tools-top {
+  min-height: 0;
+}
+
+md-toolbar {
+  &.md-secondary-theme.md-primary.md-hue-1,
+  &.md-default-theme {
+    &, h2, h3, .fa {
+      color: #fff;
+    }
+  }
+}
+
+
+
+/**
+ * Input Container
+ */
+md-input-container.md-block {
+  margin-bottom: 0px;
+}
+
+/**
+ * Sidenav
+ */
+
+md-sidenav .footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 1em 0;
+  border-top: 1px solid #E0E0E0;
+}
+
+.menu-item {
+  &:hover,
+  &:focus {
+    cursor: default;
+    color: #999;
+  }
+}
+
+.menu-item.active {
+  background-color: #eeeeee;
+  font-weight: bold;
+  color: map-get( $sidenav-color-palette, '700' );
+}
+
+.menu-item.menu-title {
+  color: #888;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+
+/**
+ * Cards
+ */
+
+md-content.card-container {
+  background-color: #EFEFEF;
+}
+
+.content > md-card {
+  background-color: white;
+  margin: 0 auto;
+
+  &.card-fixed {
+    width: 100%;
+
+    @media( min-width: $layout-breakpoint-md ) {
+      width: 940px;
+    }
+  }
+
+  &.card-offset-tall {
+    @media( min-width: $layout-breakpoint-md ) {
+      z-index: 3;
+      margin-top: -88px;
+    }
+  }
+}
+
+.card-header {
+  line-height: 80px;
+  font-size: 1.5em;
+  text-overflow: ellipsis;
+  padding: 0 16px;
+}
+
+/*.card-body {
+  padding: 0 16px 16px;
+}*/
+
+
+@each $color in red, green, grey, blue, indigo, pink, orange, purple {
+  .md-#{$color}-theme .card-header {
+    color: clr( '#{$color}', '200' );
+  }
+}
+
+// iFeis custom
+// Card with no padding
+
+md-card.card-no-padding {
+  md-card-content {
+    padding: 0;
+  }
+}
+
+// iFeis custom
+
+
+md-card {
+  md-card-header {
+
+    // Card with Font Awesome icon in header
+
+    md-card-avatar {
+      .fa {
+        font-size: 1rem;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 1.65rem;
+      }
+    }
+  }
+
+  // Card with list inside
+
+  &.f-card-list {
+    md-card-content {
+      padding: 0;
+
+      .md-subheader {
+        margin: 0;
+        background-color: $f-lightest-grey;
+
+        .fa {
+          margin-right: $baseSpace / 2;
+        }
+      }
+
+      md-list {
+        padding: 0;
+      }
+    }
+
+    &.f-card-list-bordered {
+      md-list-item {
+        border-bottom: 1px solid #ddd;
+      }
+    }
+  }
+}
+
+
+/* Subheader */
+
+.md-subheader {
+  .f-subheader-right {
+    float: right;
+  }
+
+  &.f-card-subheader {
+    background-color: $f-lightest-grey;
+    margin: 0 -16px;
+  }
+}
+
+
+/**
+ * Buttons
+ */
+
+.fab-float {
+  position: fixed;
+  padding: 30px;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+}
+
+
+/**
+ * Icons
+ */
+
+md-list-item md-icon.fa::before {
+  line-height: 24px;
+}
+
+
+/**
+ * Forms
+ */
+
+md-input-group input {
+  width: 100%;
+}
+
+
+/**
+ * Dialogs
+ */
+
+.fullscreen-dialog {
+  height:100%;
+  width:100%;
+  max-height:100%;
+  max-width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 0;
+}
+
+/**
+ * Lists
+ */
+
+md-list-item p:focus {
+  outline: none;
+}
+
+
+/* Custom */
+
+.f-note {
+  font-size: 14px;
+  color: #999;
+  margin: $baseSpace/2 0;
+
+  md-icon {
+    color: #aaa;
+    font-size: 13px;
+  }
+
+  a,
+  &.md-warn {
+    color: clr( 'orange', '400' );
+    text-decoration: none;
+  }
+
+  &.f-note-clickable:hover,
+  a:hover {
+    cursor: pointer;
+    &, md-icon {
+      color: clr( 'orange', '700' );
+    }
+  }
+}
+
+.f-note-accent {
+  text-align: center;
+  color: clr( 'orange', '700' );
+}
+
+/* Edit-in-place */
+
+[md-edit-in-place] {
+  cursor: pointer;
+
+  &.placeholder {
+    color: rgba( 0, 0, 0, 0.26 );
+  }
+
+  &:hover {
+    color: clr('green', '500');
+  }
+
+  & + form {
+    md-input-container {
+      display: flex;
+      margin: 0;
+      padding: 0;
+      height: 1rem;
+      position: relative;
+      left: -1px;
+
+      &.md-input-focused .md-input {
+        border-bottom-width: 1px;
+      }
+    }
+
+    input {
+      padding: 0;
+      line-height: inherit;
+      height: 1rem;
+    }
+
+    &:focus,
+    &:active {
+      outline: none;
+    }
+  }
+}
+
+
+.report {
+
+  /* Fonts */
+
+  .f-font-solid {
+    font-weight: 500;
+  }
+
+  .f-content-fix {
+    overflow: hidden;
+  }
+
+  .f-hidden {
+    display: none;
+  }
+
+  .f-blue {
+    //color: clr('cyan', 'A700');
+    color: clr('blue', '400');
+  }
+
+  .f-alert {
+    color: clr('red', '600');
+  }
+
+  .f-invisible {
+    opacity: 0;
+  }
+
+  .f-text-center {
+    text-align: center;
+  }
+}

@@ -1,0 +1,38 @@
+#footer {
+  background-color: #E0E0E0;
+  padding: 60px 0 20px 0;
+  font-size: 14px;
+  line-height: 30px;
+
+  > md-content {
+    background: none;
+    width: 85%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .logo {
+    width: 110px;
+    margin-bottom: 20px;
+  }
+  ul {
+    padding: 0;
+    margin-top: 25px;
+  }
+  a {
+    color: rgb(21, 74, 23);
+  }
+  .footer-menu {
+    padding-left: 20px;
+    line-height: 30px;
+
+    h3 {
+      font-size: 15px;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+    img {
+      width: 90%;
+      margin: auto;
+    }
+  }
+}

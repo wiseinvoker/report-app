@@ -1,0 +1,22 @@
+@import '../../variables';
+
+.content.login {
+  background-color: #F9F9F9;
+
+  md-content {
+    background-color: #FFF;
+    min-width: 300px;
+    max-width: 940px;
+    margin: auto;
+  }
+
+  md-content,
+  .menu-item {
+    text-align: center;
+  }
+
+  .fa {
+    margin-right: 1em;
+  }
+}
+

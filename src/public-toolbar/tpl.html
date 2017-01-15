@@ -1,0 +1,67 @@
+<md-toolbar id="public-toolbar">
+  <div class="md-toolbar-tools" layout="horizontal">
+
+    <!-- Hamburger icon -->
+    <h2 ng-hide="ctrl.publicPage">
+      <md-button class="hamburger md-icon-button" ng-click="ctrl.toggleLeftNav()">
+        <i class="fa fa-bars"></i>
+      </md-button>
+    </h2>
+
+    <!-- Logo -->
+    <h2 id="logo">
+      <a ui-sref="home">
+        <img ng-src="{{ctrl.config.CDN_ASSET_HOST}}images/iFeis_sm_web.png" />
+      </a>
+    </h2> <!-- /logo -->
+
+    <!-- Public menu -->
+    <div ng-show="ctrl.publicPage" hide show-gt-sm>
+      <md-button ui-sref="dashboard" ng-class="{'md-raised':ctrl.$state.includes('dashboard')}"
+                 ng-show="ctrl.fSession.isLoggedIn()">Dashboard</md-button>
+    </div> <!-- /public -->
+
+    <!-- Logged-in menu -->
+    <div ng-hide="ctrl.publicPage" hide show-gt-sm>
+      <md-button ui-sref="dashboard" ng-class="{'md-raised':ctrl.$state.includes('dashboard')}"
+                 ng-show="ctrl.fSession.isLoggedIn()">{{ ctrl.user.is_superuser ? "Team Reports" : "My Report" }}</md-button>
+      <md-button ui-sref="account" ng-class="{'md-raised':ctrl.$state.includes('account')}" class="md-disabled"
+                 ng-show="ctrl.fSession.isLoggedIn()">Account</md-button>
+    </div> <!-- /logged -->
+
+    <span flex></span>
+
+    <!-- Login button -->
+    <h2 ng-hide="ctrl.fSession.isLoggedIn()">
+      <md-button class="md-raised login-btn" ui-sref="login">Login</md-button>
+    </h2>
+
+    <!-- Drop-down menu -->
+    <div ng-show="ctrl.fSession.isLoggedIn()">
+      <md-menu md-offset="0 55" md-position-mode="target-right target" class="user-dropdown">
+        <md-button ng-click="$mdOpenMenu($event)">
+          <span hide show-gt-sm>{{ ctrl.user.last_name }} {{ ctrl.user.first_name }}</span>
+          <md-icon class="fa fa-chevron-down"></md-icon>
+        </md-button>
+        <md-menu-content width="4">
+          <md-menu-item>
+            <md-button ui-sref="dashboard">
+              <md-icon class="fa fa-bar-chart"></md-icon> {{ ctrl.user.is_superuser ? "Team Reports" : "My Report" }}
+            </md-button>
+          </md-menu-item>
+          <md-menu-item>
+            <md-button ui-sref="account">
+              <md-icon class="fa fa-user"></md-icon> My Account
+            </md-button>
+          </md-menu-item>
+          <md-menu-divider></md-menu-divider>
+          <md-menu-item>
+            <md-button ng-click="ctrl.logout()">
+              <md-icon class="fa fa-sign-out"></md-icon> Logout
+            </md-button>
+          </md-menu-item>
+        </md-menu-content>
+      </md-menu>
+    </div> <!-- /drop-down -->
+  </div>
+</md-toolbar>

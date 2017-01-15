@@ -1,0 +1,14 @@
+@import '../../../variables';
+
+.content.not-authorized {
+  background-color: clr( 'orange', '200' );
+
+  text-align: center;
+  color: clr( 'orange', '50' );
+  font-size: 2em;
+}
+
+.content.not-authorized .icon {
+  font-size: 3em;
+}
+

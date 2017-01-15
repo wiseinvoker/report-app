@@ -1,0 +1,46 @@
+#public-toolbar {
+  position: fixed;
+  background: rgba(20, 69, 37, 0.6);
+  min-height: 75px;
+  padding-top: 7px;
+  top: 0;
+  z-index: 3;
+
+  .login-btn {
+    background-color: rgb(175, 159, 76);
+    color: #fff;
+  }
+  #logo {
+    margin-left: 30px;
+    font-weight: bold;
+    margin-right: 5%;
+    z-index: 1;
+
+    > a > img {
+      width: 100px;
+    }
+  }
+  .md-button:not(.md-raised) {
+    color: #fff;
+
+    > md-icon {
+      color: #fff;
+    }
+  }
+  .user-dropdown {
+
+    > .md-button {
+      padding: 8px;
+    }
+    .avatar {
+      width: 40px;
+      border-radius: 50%;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+    > .md-button > md-icon {
+      margin-top: 5px;
+      margin-left: 5px;
+    }
+  }
+}

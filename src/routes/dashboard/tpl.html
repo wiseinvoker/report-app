@@ -1,0 +1,153 @@
+<div layout="column" layout-fill flex class="dashboard">
+  <f-public-toolbar></f-public-toolbar>
+  <f-public-header>
+    <h2>Welcome, {{dash.user.first_name}}!</h2>
+  </f-public-header>
+
+  <!-- Dashboard content for general user -->
+  <md-content layout-padding layout-wrap ng-hide="dash.user.is_superuser">
+    <md-list>
+      <md-list-item>
+        <div layout="column" flex>
+          <md-datepicker required
+                         flex-gt-xs
+                         ng-change="dash.load()"
+                         ng-model="dash.report_date"
+                         ng-change="dash.load()"></md-datepicker>
+        </div>
+        <md-button class="md-raised md-primary"
+                   ng-click="dash.submitReport()"
+                   md-theme="secondary"> Submit</md-button>
+      </md-list-item>
+      <md-list-item>
+        <md-input-container class="md-block" flex>
+          <label>1. 과제수행정형</label>
+          <textarea ng-model="dash.myreport.task" >
+          </textarea>
+        </md-input-container>
+      </md-list-item>
+      <md-list-item>
+        <md-input-container class="md-block" flex>
+          <label>2. 학습한 내용</label>
+          <textarea ng-model="dash.myreport.learning" >
+          </textarea>
+        </md-input-container>
+      </md-list-item>
+      <md-list-item>
+        <md-input-container class="md-block" flex>
+          <label>3. 계획</label>
+          <textarea ng-model="dash.myreport.plan" >
+          </textarea>
+        </md-input-container>
+      </md-list-item>
+      <md-list-item>
+        <md-input-container class="md-block" flex>
+          <label>4. 륭성자료</label>
+          <textarea ng-model="dash.myreport.data" >
+          </textarea>
+        </md-input-container>
+      </md-list-item>
+      <md-list-item>
+        <md-input-container class="md-block" flex>
+          <label>5. 외출</label>
+          <textarea ng-model="dash.myreport.outing" >
+          </textarea>
+        </md-input-container>
+      </md-list-item>
+      <md-list-item>
+        <md-input-container class="md-block" flex>
+          <label>6. 기타</label>
+          <textarea ng-model="dash.myreport.other" >
+          </textarea>
+        </md-input-container>
+      </md-list-item>
+      <md-list-item>
+        <md-input-container class="md-block" flex>
+          <label>7. 제기할 내용</label>
+          <textarea ng-model="dash.myreport.suggestion" >
+          </textarea>
+        </md-input-container>
+      </md-list-item>
+    </md-list>
+  </md-content>
+  <!-- /dashboard content for general user -->
+
+  <!-- Dashboard content for admin user -->
+  <md-content layout-padding layout-wrap ng-show="dash.user.is_superuser">
+    <md-subheader>
+    <md-list-item>
+        <div layout="column" flex>
+          <md-datepicker required
+                         flex-gt-xs
+                         ng-change="dash.load()"
+                         ng-model="dash.report_date"
+                         ng-change="dash.load()"></md-datepicker>
+        </div>
+      </md-list-item>
+    </md-subheader>
+    <md-list>
+      <md-table class="feis-syllabus__table">
+        <md-table-header>
+            <md-table-cell md-grow="2" hide show-gt-md>Name</md-table-cell>
+            <md-table-cell md-grow="8" hide show-gt-md>Report</md-table-cell>
+        </md-table-header>
+        <md-table-row ng-repeat="record in dash.team_reports">
+            <md-table-cell md-grow="2">{{ record.reporter.last_name }}  {{ record.reporter.first_name }}</md-table-cell>
+            <md-table-cell md-grow="8">
+                <md-list-item>
+                  <md-input-container class="md-block" flex>
+                    <label>1. 과제수행정형</label>
+                    <textarea readonly="true" ng-model="record.task" >
+                    </textarea>
+                  </md-input-container>
+                </md-list-item>
+                <md-list-item>
+                  <md-input-container class="md-block" flex>
+                    <label>2. 학습한 내용</label>
+                    <textarea readonly="true" ng-model="record.learning" >
+                    </textarea>
+                  </md-input-container>
+                </md-list-item>
+                <md-list-item>
+                  <md-input-container class="md-block" flex>
+                    <label>3. 계획</label>
+                    <textarea readonly="true" ng-model="record.plan" >
+                    </textarea>
+                  </md-input-container>
+                </md-list-item>
+                <md-list-item>
+                  <md-input-container class="md-block" flex>
+                    <label>4. 륭성자료</label>
+                    <textarea readonly="true" ng-model="record.data" >
+                    </textarea>
+                  </md-input-container>
+                </md-list-item>
+                <md-list-item>
+                  <md-input-container class="md-block" flex>
+                    <label>5. 외출</label>
+                    <textarea readonly="true" ng-model="record.outing" >
+                    </textarea>
+                  </md-input-container>
+                </md-list-item>
+                <md-list-item>
+                  <md-input-container class="md-block" flex>
+                    <label>6. 기타</label>
+                    <textarea readonly="true" ng-model="record.other" >
+                    </textarea>
+                  </md-input-container>
+                </md-list-item>
+                <md-list-item>
+                  <md-input-container class="md-block" flex>
+                    <label>7. 제기할 내용</label>
+                    <textarea readonly="true" ng-model="record.suggestion" >
+                    </textarea>
+                  </md-input-container>
+                </md-list-item>
+            </md-table-cell>
+        </md-table-row>
+      </md-table>
+    </md-list>
+  </md-content>
+  <!-- /dashboard content for admin user -->
+</div>
+

@@ -1,0 +1,190 @@
+@import '../../variables';
+
+.public-content.home {
+
+  .yellow-btn.md-button {
+    background-color: rgb(175, 159, 76);
+  }
+  .full-width-slider {
+    background: clr( 'green', '300' );
+    overflow: hidden;
+
+    h1 {
+      font-weight: normal;
+      font-size: 5vw;
+      color: #fff;
+    }
+    > img, > video {
+      height: 250px;
+      width: auto;
+
+      @media( min-width: $layout-breakpoint-sm ) {
+        width: 100%;
+        height: auto;
+      }
+    }
+    > .slider-overlay {
+      position: absolute;
+      top: 130px;
+      width: 100%;
+      text-align: center;
+      z-index: 1;
+
+      @media( min-width: $layout-breakpoint-sm ) {
+        top: 10vw;
+      }
+      > .md-button {
+        font-size: 15px;
+        padding: 0 15px;
+        margin: 6px;
+        line-height: 36px;
+
+        @media( min-width: $layout-breakpoint-sm ) {
+          font-size: 20px;
+          margin-left: 20px;
+          line-height: 50px;
+          padding: 0 20px;
+        }
+        > i {
+          margin-right: 8px;
+        }
+      }
+    }
+  }
+  .learn-more {
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 20px;
+    color: clr( 'green', '300' );
+  }
+}
+
+.public-content {
+
+  p {
+    line-height: 30px;
+  }
+  .section-titles {
+    font-size: 30px;
+    font-weight: normal;
+    color: #144525;
+    text-align: left;
+    margin-top: 0;
+  }
+  .big-tagline {
+    text-align: center;
+    font-size: 35px;
+    padding-top: 80px;
+    margin: 0;
+    background-color: white;
+  }
+  .middle-highlights {
+    padding: 20px 5% 20px 5%;
+    background-color:white;
+
+    @media( min-width: $layout-breakpoint-sm ) {
+      padding: 60px 5% 80px 5%;
+    }
+
+    > div {
+      text-align: center;
+      padding: 20px 0;
+
+      @media( min-width: $layout-breakpoint-sm ) {
+        padding: 0 20px;
+      }
+      > md-icon {
+        font-size: 100px;
+        height: auto;
+        width: auto;
+        margin: 10px;
+        color: clr( 'green', '300' );
+      }
+      h2 {
+        color: #144525;
+        font-weight: normal;
+        margin-bottom: 10px;
+      }
+      > p {
+        color: #666;
+      }
+    }
+  }
+  .md-raised.md-primary.md-button.md-default-theme {
+    color: #fff;
+  }
+  .feature-header {
+    background-color: clr( 'green', '300' );
+    text-align: center;
+    color: #fff;
+    padding: 30px;
+    font-size: 25px;
+    line-height: 35px;
+
+    @media( min-width: $layout-breakpoint-sm ) {
+      padding: 50px;
+      font-size: 32px;
+    }
+    .md-button {
+      padding: 5px 20px;
+      margin-top: 30px;
+    }
+  }
+  .section-block {
+    padding: 50px 40px;
+
+    @media( min-width: $layout-breakpoint-sm ) {
+      padding: 50px 70px;
+    }
+
+    .col-left {
+      padding-bottom: 40px;
+
+      @media( min-width: $layout-breakpoint-sm ) {
+        padding: 0 60px 0 0;
+      }
+    }
+    .col-right {
+      padding-top: 40px;
+
+      @media( min-width: $layout-breakpoint-sm ) {
+        padding: 0 0 0 60px;
+      }
+    }
+    .md-button {
+      margin: 20px 0 0 0;
+      padding: 5px 30px;
+      width: 100%;
+
+      @media( min-width: $layout-breakpoint-sm ) {
+        width: auto;
+      }
+    }
+    img {
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    img.shadow {
+      box-shadow: #ddd 10px 10px 15px;
+    }
+    .placeholder {
+      > span {
+        position: absolute;
+        padding: 20px;
+        background-color: white;
+        z-index: 1;
+        text-transform: uppercase;
+        font-size: 14px;
+        border: #000 1px solid;
+      }
+      > img {
+        opacity: 0.5;
+      }
+    }
+  }
+  .section-block.offset {
+    background-color: #e6e6e6;
+  }
+}

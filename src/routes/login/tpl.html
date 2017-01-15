@@ -1,0 +1,30 @@
+<div layout="column" flex>
+  <div class="content login" flex layout="column" layout-align="center center">
+    <md-content class="md-whiteframe-z1">
+      <h1>Log in</h1>
+      <md-list>
+        <md-list-item>
+          <md-input-container class="md-block" flex>
+            <label>User Name</label>
+            <input ng-model="login.user.username"/>
+          </md-input-container>
+        </md-list-item>
+        <md-list-item>
+          <md-input-container class="md-block" flex>
+            <label>Password</label>
+            <input ng-model="login.user.password"
+                   type="password" />
+          </md-input-container>
+        </md-list-item>
+        <md-list-item>
+          <md-button class="md-raised md-primary"
+                     flex
+                     ng-click="login.login()"
+                     md-theme="secondary"> Login</md-button>
+        </md-list-item>
+      </md-list>
+    </md-content>
+  </div>
+  <f-footer></f-footer>
+</div>
+

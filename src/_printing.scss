@@ -1,0 +1,30 @@
+.print-preview {
+  /**
+   * Hide many controls and components, by default
+   */
+  md-toolbar,
+  md-tabs,
+  md-sidebar {
+    display: none;
+  }
+
+  html,
+  body {
+    width: 8.5in;
+    height: 11in;
+  }
+
+  div {
+    page-break-inside: avoid;
+  }
+}
+
+@media print {
+  @extend .print-preview;
+}
+
+@page {
+  size: letter;
+  margin: 0.5in;
+}
+

@@ -1,0 +1,76 @@
+<div class="profile" layout="column" flex>
+  <f-public-toolbar></f-public-toolbar>
+  <f-public-header layout="row">
+    <h2 flex>My Account</h2>
+  </f-public-header>
+
+  <div class="content">
+    <!-- Profile -->
+<div layout="row" layout-align="center">
+  <md-card flex flex-gt-md="66" class="f-card-w-actions">
+
+    <!-- Profile Toolbar -->
+    <md-toolbar md-theme="secondary" class="md-primary md-hue-1">
+      <div class="md-toolbar-tools" layout-xs="column" layout-wrap>
+        <h2 class="md-flex" flex-xs>Profile</h2>
+        <span flex hide-xs></span>
+        <p class="md-body-1 f-profile-email" flex-xs>{{ profile.email }}</p>
+      </div>
+    </md-toolbar>
+
+    <!-- Profile Content -->
+    <md-card-content>
+      <form id="profileForm" name="profileForm" ng-submit="saveProfile(profile)">
+
+        <div layout layout-xs="column">
+          <md-input-container flex>
+            <label>First Name</label>
+            <input ng-model="profile.first_name"
+                   readonly="true" >
+          </md-input-container>
+          <md-input-container flex>
+            <label>Last Name</label>
+            <input ng-model="profile.last_name"
+                   readonly="true" >
+          </md-input-container>
+        </div>
+
+        <!-- Snail mail -->
+        <md-subheader class="f-card-subheader">Privacy Update</md-subheader>
+
+        <div layout-gt-sm="row">
+          <md-list-item flex>
+            <md-input-container class="md-block" flex>
+              <label>Password</label>
+              <input ng-model="profile.password"
+                     type="password" />
+            </md-input-container>
+          </md-list-item>
+        </div>
+
+        <div layout-gt-sm="row">
+          <md-list-item flex>
+            <md-input-container class="md-block" flex>
+              <label>Confirm Password</label>
+              <input ng-model="profile.confirm_password"
+                     type="password" />
+            </md-input-container>
+          </md-list-item>
+        </div>
+
+      </form>
+    </md-card-content>
+
+    <md-divider></md-divider>
+
+    <md-card-actions layout="row" layout-align="end center" layout-padding>
+      <md-button type="submit"
+                 form="profileForm"
+                 class="md-primary md-raised"
+                 ng-disabled="profileForm.$invalid || !profile.password"> Update</md-button>
+    </md-card-actions>
+  </md-card>
+</div> <!-- /profile -->
+  </div>
+</div>
+

@@ -1,0 +1,31 @@
+@import '../../../variables';
+
+md-toast.f-toast {
+  position: fixed;
+
+  .md-action {
+    font-weight: bold;
+    &:focus,
+    &:active {
+      outline: none;
+    }
+  }
+
+  &.success {
+    .md-toast-content {
+      background-color: clr('green', '300');
+    }
+  }
+
+  &.warning {
+    .md-toast-content {
+      background-color: clr('orange', '600');
+    }
+  }
+
+  &.error {
+    .md-toast-content {
+      background-color: clr('red', '600');
+    }
+  }
+}

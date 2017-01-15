@@ -1,0 +1,30 @@
+.profile {
+
+  .md-caption {
+    opacity: .6;
+  }
+
+  md-input-container {
+    margin-bottom: 0;
+  }
+
+  .md-toolbar-tools {
+    min-width: 0;
+    .f-profile-email {
+      margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .f-all-competitors {
+    margin-top: 18px;
+  }
+
+  .f-card-w-actions {
+    md-card-content {
+      padding-bottom: 0;
+    }
+  }
+}
