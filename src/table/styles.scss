@@ -7,7 +7,7 @@
 $table-header-font-weight:      normal;
 $table-header-font-size:        12px;
 $table-header-font-color:       rgba(0,0,0,.54);
-$table-header-height:           56px;
+$table-header-height:           48px;
 
 $table-row-height:              48px;
 
@@ -108,6 +108,10 @@ table.f-table {
   white-space: nowrap;
 }
 
+.md-table-center {
+  text-align: center
+}
+
 .md-table-fixed {
   table-layout: fixed;
 }
@@ -205,7 +209,7 @@ table.f-table {
         }
       }
     }
-    
+
     // Special overrides for shadows
     &.shadow-z-1 {
       -webkit-box-shadow: none;
@@ -236,20 +240,10 @@ table.f-table {
   }
 }
 
-
 .md-table {
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: space-between;
-  color: $table-font-color;
-  font-size: 16px;
-
-  &.md-bordered {
-    border: 1px solid $table-border-color;
-  }
-
-  &.not-responsive {
-    md-table-row {
+  &%not-responsive {
+    md-table-row,
+    .md-table-row {
       display: flex;
       flex-shrink: 0;
       min-height: $table-row-height;
@@ -270,7 +264,8 @@ table.f-table {
       }
     }
 
-    md-table-cell {
+    md-table-cell,
+    .md-table-cell {
       padding: 17px 0;
       margin-right: 56px;
 
@@ -294,18 +289,36 @@ table.f-table {
         min-height: 1rem;
       }
 
-      @media (max-width: $layout-breakpoint-sm) {
-        margin-right: 5px;
-      }
+      margin-right: 5px;
     }
-  }
-
-  @media (min-width: $layout-breakpoint-md) {
-    @extend .not-responsive;
   }
 }
 
-md-table-row {
+.md-table {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  color: $table-font-color;
+  font-size: 13px;
+
+  &.md-bordered {
+    border: 1px solid $table-border-color;
+  }
+
+  @extend %not-responsive;
+}
+
+@media(max-width: $layout-breakpoint-sm) {
+  .md-table {
+    md-table-cell,
+    .md-table-cell {
+      margin-right: 5px;
+    }
+  }
+}
+
+md-table-row,
+.md-table-row {
   border-bottom: 1px solid $table-border-color;
 
   &:hover {
@@ -315,13 +328,19 @@ md-table-row {
   &.md-active {
     background: $table-bg-active;
   }
+
+  &:last-child {
+    border-bottom: 0;
+  }
 }
 
-md-table-row.md-table-header {
+md-table-row.md-table-header,
+.md-table-row.md-table-header {
   display: none;
 }
 
-md-table-cell {
+md-table-cell,
+.md-table-cell{
   display: block;
   flex-flow: row nowrap;
   flex-grow: 1;
@@ -342,4 +361,3 @@ md-table-cell {
     text-align: right;
   }
 }
-
