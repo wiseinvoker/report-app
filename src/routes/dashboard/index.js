@@ -1,11 +1,11 @@
-import styles from './styles.scss';
-import accounts from '../../accounts';
-import header from '../../public-header';
-import reports from '../../reports';
+import './styles.scss';
+import '../../accounts';
+import '../../public-header';
+import '../../reports';
 
 class UserDashboardController {
-  constructor ( $state, fReportService, currentUser ) {
-    this._ = { $state, fReportService };
+  constructor ( $state, fReportService, msgService, currentUser ) {
+    this._ = { $state, fReportService, msgService };
     this.user = currentUser;
     this.report_date = new Date();
     // this.loadReport();
@@ -45,10 +45,15 @@ class UserDashboardController {
 
   submitReport() {
     if ( this.myreport.id ) {
-      this._.fReportService.update(this.myreport);
+      this._.fReportService.update( this.myreport )
+          .then( () => this._.msgService.displaySuccessMsg('Your report has been updated successfully.'));
     } else {
       this.myreport.reporter = this.user.id;
-      this._.fReportService.create(this.myreport);
+      this._.fReportService.create(this.myreport)
+          .then( res => {
+            this.myreport = res.data;
+            this._.msgService.displaySuccessMsg('Your report has been created successfully.')
+          });
     }
   }
 
