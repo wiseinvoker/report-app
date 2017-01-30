@@ -13,7 +13,9 @@
           <md-input-container class="md-block" flex>
             <label>Password</label>
             <input ng-model="login.user.password"
-                   type="password" />
+                   type="password"
+                   f-enter="login.login()"
+            />
           </md-input-container>
         </md-list-item>
         <md-list-item>
